@@ -18,14 +18,13 @@ body{
 font-family:Montserrat,sans-serif;
 background:#f8f4ec;
 color:#2f2f2f;
-line-height:1.6;
 }
 
 .hero{
 height:100vh;
 background:
-linear-gradient(rgba(0,0,0,.25),rgba(0,0,0,.35)),
-url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1600&q=80');
+linear-gradient(rgba(0,0,0,.25),rgba(0,0,0,.45)),
+url('https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&w=1600&q=80');
 background-size:cover;
 background-position:center;
 display:flex;
@@ -43,22 +42,50 @@ max-width:900px;
 .subtitle{
 letter-spacing:4px;
 font-size:14px;
-margin-bottom:20px;
 text-transform:uppercase;
+margin-bottom:20px;
 }
 
 h1{
 font-family:'Cormorant Garamond',serif;
 font-size:82px;
 font-weight:500;
+margin-bottom:15px;
 line-height:0.95;
-margin-bottom:20px;
 }
 
 .date{
-font-size:22px;
+font-size:24px;
+margin-bottom:25px;
 font-weight:300;
 letter-spacing:2px;
+}
+
+.countdown{
+display:flex;
+justify-content:center;
+gap:18px;
+flex-wrap:wrap;
+margin-top:10px;
+}
+
+.box{
+background:rgba(255,255,255,.15);
+padding:16px 18px;
+border-radius:14px;
+min-width:90px;
+backdrop-filter: blur(6px);
+}
+
+.num{
+font-size:34px;
+font-weight:600;
+}
+
+.label{
+font-size:12px;
+letter-spacing:2px;
+text-transform:uppercase;
 }
 
 section{
@@ -71,7 +98,6 @@ text-align:center;
 h2{
 font-family:'Cormorant Garamond',serif;
 font-size:52px;
-font-weight:500;
 margin-bottom:20px;
 }
 
@@ -79,30 +105,22 @@ p{
 font-size:18px;
 max-width:760px;
 margin:auto;
-}
-
-.card{
-background:white;
-padding:50px 30px;
-border-radius:20px;
-box-shadow:0 10px 30px rgba(0,0,0,.06);
-margin-top:40px;
-}
-
-.gold{
-color:#b89b47;
+line-height:1.8;
 }
 
 .footer{
 padding:50px 20px;
 font-size:14px;
 opacity:.65;
+text-align:center;
 }
 
 @media(max-width:768px){
 h1{font-size:54px;}
 h2{font-size:38px;}
 .date{font-size:18px;}
+.box{min-width:75px;}
+.num{font-size:28px;}
 p{font-size:16px;}
 }
 </style>
@@ -112,40 +130,78 @@ p{font-size:16px;}
 
 <div class="hero">
 <div class="hero-inner">
+
 <div class="subtitle">Save the Date</div>
+
 <h1>José & Ana</h1>
+
 <div class="date">11 de Junho de 2027 · Guimarães</div>
+
+<div class="countdown">
+<div class="box">
+<div class="num" id="days">0</div>
+<div class="label">Dias</div>
+</div>
+
+<div class="box">
+<div class="num" id="hours">0</div>
+<div class="label">Horas</div>
+</div>
+
+<div class="box">
+<div class="num" id="minutes">0</div>
+<div class="label">Min</div>
+</div>
+
+<div class="box">
+<div class="num" id="seconds">0</div>
+<div class="label">Seg</div>
+</div>
+</div>
+
 </div>
 </div>
 
 <section>
-<h2>Um dia inesquecível</h2>
+<h2>Um dia especial aproxima-se</h2>
 <p>
-Num cenário inspirado pela elegância intemporal da Toscana,
-vamos celebrar o amor rodeados pelas pessoas que mais significam para nós.
+Num cenário íntimo e elegante, inspirado pela beleza intemporal da Toscana,
+vamos celebrar o amor com as pessoas que mais significam para nós.
 </p>
 </section>
 
 <section>
-<div class="card">
-<h2 class="gold">11 Junho 2027</h2>
+<h2>Reserve esta data</h2>
 <p>
-Guimarães, Portugal<br><br>
-Reservem esta data especial. Em breve partilharemos todos os detalhes.
-</p>
-</div>
-</section>
-
-<section>
-<h2>Com carinho</h2>
-<p>
-Estamos ansiosos por viver este momento convosco.
+Em breve partilharemos todos os detalhes convosco.
 </p>
 </section>
 
 <div class="footer">
-José & Ana · Made with love
+José & Ana · 2027
 </div>
+
+<script>
+const targetDate = new Date("June 11, 2027 00:00:00").getTime();
+
+function updateCountdown(){
+const now = new Date().getTime();
+const diff = targetDate - now;
+
+const days = Math.floor(diff / (1000*60*60*24));
+const hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+const minutes = Math.floor((diff % (1000*60*60)) / (1000*60));
+const seconds = Math.floor((diff % (1000*60)) / 1000);
+
+document.getElementById("days").innerHTML = days;
+document.getElementById("hours").innerHTML = hours;
+document.getElementById("minutes").innerHTML = minutes;
+document.getElementById("seconds").innerHTML = seconds;
+}
+
+setInterval(updateCountdown,1000);
+updateCountdown();
+</script>
 
 </body>
 </html>
