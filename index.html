@@ -5,69 +5,105 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>José & Ana | Save the Date</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;700&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
 
 <style>
-body {
-    margin: 0;
-    font-family: 'Montserrat', sans-serif;
-    background: #F6F1E7;
-    color: #2f2f2f;
-    text-align: center;
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
 
-.hero {
-    height: 100vh;
-    background: linear-gradient(rgba(255,255,255,0.4), rgba(246,241,231,0.9)),
-    url('https://images.unsplash.com/photo-1521336575822-6da63fb45455?auto=format&fit=crop&w=1600&q=80');
-    background-size: cover;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
+body{
+font-family:Montserrat,sans-serif;
+background:#f8f4ec;
+color:#2f2f2f;
+line-height:1.6;
 }
 
-h1 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 60px;
-    margin: 0;
+.hero{
+height:100vh;
+background:
+linear-gradient(rgba(0,0,0,.25),rgba(0,0,0,.35)),
+url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1600&q=80');
+background-size:cover;
+background-position:center;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:20px;
+color:white;
 }
 
-h2 {
-    font-weight: 300;
-    letter-spacing: 3px;
+.hero-inner{
+max-width:900px;
 }
 
-.section {
-    padding: 60px 20px;
-    max-width: 800px;
-    margin: auto;
+.subtitle{
+letter-spacing:4px;
+font-size:14px;
+margin-bottom:20px;
+text-transform:uppercase;
 }
 
-.luxury {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 32px;
+h1{
+font-family:'Cormorant Garamond',serif;
+font-size:82px;
+font-weight:500;
+line-height:0.95;
+margin-bottom:20px;
 }
 
-.lemon {
-    color: #C9A227;
+.date{
+font-size:22px;
+font-weight:300;
+letter-spacing:2px;
 }
 
-.details {
-    font-size: 18px;
-    line-height: 1.8;
+section{
+padding:90px 24px;
+max-width:1000px;
+margin:auto;
+text-align:center;
 }
 
-.countdown {
-    font-size: 28px;
-    margin-top: 20px;
+h2{
+font-family:'Cormorant Garamond',serif;
+font-size:52px;
+font-weight:500;
+margin-bottom:20px;
 }
 
-.footer {
-    padding: 40px;
-    font-size: 14px;
-    opacity: 0.7;
+p{
+font-size:18px;
+max-width:760px;
+margin:auto;
+}
+
+.card{
+background:white;
+padding:50px 30px;
+border-radius:20px;
+box-shadow:0 10px 30px rgba(0,0,0,.06);
+margin-top:40px;
+}
+
+.gold{
+color:#b89b47;
+}
+
+.footer{
+padding:50px 20px;
+font-size:14px;
+opacity:.65;
+}
+
+@media(max-width:768px){
+h1{font-size:54px;}
+h2{font-size:38px;}
+.date{font-size:18px;}
+p{font-size:16px;}
 }
 </style>
 </head>
@@ -75,36 +111,40 @@ h2 {
 <body>
 
 <div class="hero">
-    <h1>José & Ana</h1>
-    <h2>Save the Date</h2>
-    <div class="countdown">11 de Junho de 2027 · Guimarães</div>
+<div class="hero-inner">
+<div class="subtitle">Save the Date</div>
+<h1>José & Ana</h1>
+<div class="date">11 de Junho de 2027 · Guimarães</div>
+</div>
 </div>
 
-<div class="section">
-    <div class="luxury">Estamos a casar</div>
-    <p class="details">
-        Num cenário inspirado pela Toscana, entre natureza, luz quente e amor,
-        convidamos-te a celebrar connosco este momento tão especial.
-    </p>
-</div>
+<section>
+<h2>Um dia inesquecível</h2>
+<p>
+Num cenário inspirado pela elegância intemporal da Toscana,
+vamos celebrar o amor rodeados pelas pessoas que mais significam para nós.
+</p>
+</section>
 
-<div class="section">
-    <div class="luxury lemon">11 de Junho de 2027</div>
-    <p class="details">
-        Guimarães · Portugal<br>
-        Cerimónia e celebração íntima com as nossas pessoas mais especiais.
-    </p>
+<section>
+<div class="card">
+<h2 class="gold">11 Junho 2027</h2>
+<p>
+Guimarães, Portugal<br><br>
+Reservem esta data especial. Em breve partilharemos todos os detalhes.
+</p>
 </div>
+</section>
 
-<div class="section">
-    <div class="luxury">Save the Date</div>
-    <p class="details">
-        Reserva este dia. Em breve partilhamos mais detalhes contigo.
-    </p>
-</div>
+<section>
+<h2>Com carinho</h2>
+<p>
+Estamos ansiosos por viver este momento convosco.
+</p>
+</section>
 
 <div class="footer">
-    José & Ana · 2027 · Made with love
+José & Ana · Made with love
 </div>
 
 </body>
