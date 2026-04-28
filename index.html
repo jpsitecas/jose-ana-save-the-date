@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ana & José | Save the Date</title>
+<title>José & Ana | Save the Date</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;700&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
 
@@ -14,16 +14,23 @@ padding:0;
 box-sizing:border-box;
 }
 
+html{
+scroll-behavior:smooth;
+}
+
 body{
-font-family:Montserrat,sans-serif;
+font-family:'Montserrat',sans-serif;
 background:#f8f4ec;
 color:#2f2f2f;
+overflow-x:hidden;
 }
+
+/* HERO */
 
 .hero{
 height:100vh;
 background:
-linear-gradient(rgba(0,0,0,.25),rgba(0,0,0,.45)),
+linear-gradient(rgba(0,0,0,.28),rgba(0,0,0,.45)),
 url('foto_casal.jpeg');
 background-size:cover;
 background-position:center;
@@ -36,57 +43,78 @@ color:white;
 }
 
 .hero-inner{
-max-width:900px;
+max-width:1100px;
+animation:fadeUp 1.4s ease;
 }
 
-.subtitle{
-letter-spacing:4px;
+.top-text{
 font-size:14px;
+letter-spacing:5px;
 text-transform:uppercase;
-margin-bottom:20px;
+margin-bottom:18px;
+opacity:.95;
 }
 
 h1{
 font-family:'Cormorant Garamond',serif;
-font-size:82px;
+font-size:110px;
 font-weight:500;
-margin-bottom:15px;
-line-height:0.95;
+line-height:0.9;
+margin-bottom:18px;
 }
 
 .date{
-font-size:24px;
-margin-bottom:25px;
+font-size:28px;
 font-weight:300;
 letter-spacing:2px;
+}
+
+/* COUNTDOWN SECTION */
+
+.countdown-section{
+padding:70px 20px;
+text-align:center;
+background:#f8f4ec;
+}
+
+.countdown-title{
+font-family:'Cormorant Garamond',serif;
+font-size:54px;
+margin-bottom:30px;
+color:#2f2f2f;
 }
 
 .countdown{
 display:flex;
 justify-content:center;
-gap:18px;
+gap:20px;
 flex-wrap:wrap;
-margin-top:10px;
 }
 
 .box{
-background:rgba(255,255,255,.15);
-padding:16px 18px;
-border-radius:14px;
-min-width:90px;
-backdrop-filter: blur(6px);
+background:white;
+padding:22px 20px;
+border-radius:18px;
+min-width:110px;
+box-shadow:0 12px 28px rgba(0,0,0,.08);
 }
 
 .num{
-font-size:34px;
+font-size:42px;
 font-weight:600;
+line-height:1;
+color:#2f2f2f;
 }
 
 .label{
 font-size:12px;
-letter-spacing:2px;
+letter-spacing:3px;
 text-transform:uppercase;
+margin-top:10px;
+color:#777;
 }
+
+/* CONTENT */
 
 section{
 padding:90px 24px;
@@ -97,47 +125,100 @@ text-align:center;
 
 h2{
 font-family:'Cormorant Garamond',serif;
-font-size:52px;
-margin-bottom:20px;
+font-size:56px;
+font-weight:500;
+margin-bottom:22px;
+color:#2e2e2e;
 }
 
 p{
-font-size:18px;
+font-size:19px;
+line-height:1.9;
 max-width:760px;
 margin:auto;
-line-height:1.8;
+}
+
+.card{
+background:white;
+padding:55px 35px;
+border-radius:24px;
+box-shadow:0 14px 35px rgba(0,0,0,.06);
+margin-top:30px;
+}
+
+.gold{
+color:#b89b47;
 }
 
 .footer{
-padding:50px 20px;
+padding:55px 20px;
+text-align:center;
 font-size:14px;
 opacity:.65;
-text-align:center;
 }
 
-@media(max-width:768px){
-h1{font-size:54px;}
-h2{font-size:38px;}
-.date{font-size:18px;}
-.box{min-width:75px;}
-.num{font-size:28px;}
+/* ANIMATION */
+
+@keyframes fadeUp{
+from{
+opacity:0;
+transform:translateY(35px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+h1{font-size:68px;}
+.date{font-size:20px;}
+.countdown-title{font-size:40px;}
+.box{min-width:82px;}
+.num{font-size:30px;}
+h2{font-size:42px;}
 p{font-size:16px;}
+
+}
+
+@media(max-width:600px){
+
+h1{font-size:52px;}
+.top-text{font-size:12px;}
+.date{font-size:18px;}
+.countdown{gap:12px;}
+.box{min-width:72px;padding:18px 12px;}
+.countdown-title{font-size:34px;}
+
 }
 </style>
 </head>
 
 <body>
 
-<div class="hero">
+<section class="hero">
+
 <div class="hero-inner">
 
-<div class="subtitle">Save the Date</div>
+<div class="top-text">Save the Date</div>
 
-<h1>Ana & José</h1>
+<h1>José & Ana</h1>
 
-<div class="date">19 de Junho de 2027 · Guimarães</div>
+<div class="date">11 de Junho de 2027 · Guimarães</div>
+
+</div>
+
+</section>
+
+<section class="countdown-section">
+
+<div class="countdown-title">Falta pouco</div>
 
 <div class="countdown">
+
 <div class="box">
 <div class="num" id="days">0</div>
 <div class="label">Dias</div>
@@ -151,39 +232,50 @@ p{font-size:16px;}
 <div class="box">
 <div class="num" id="minutes">0</div>
 <div class="label">Min</div>
-</div>
-
 <div class="box">
 <div class="num" id="seconds">0</div>
 <div class="label">Seg</div>
 </div>
-</div>
 
 </div>
-</div>
 
-<section>
-<h2>Um dia especial aproxima-se</h2>
-<p>
-Â contagem decrescente começou. Este será o nosso dia e não podiamos estar mais felizes por partilhar o mesmo convosco. 
-</p>
 </section>
 
 <section>
-<h2>Reserve esta data</h2>
+
+<h2>Um dia especial aproxima-se</h2>
+
 <p>
-Em breve partilharemos todos os detalhes convosco.
+Â contagem decrescente começou. Este será o nosso dia e não podiamos estar mais felizes por partilhar o mesmo convosco.
 </p>
+
+</section>
+
+<section>
+
+<div class="card">
+
+<h2 class="gold">Reserve esta data</h2>
+
+<p>
+11 de Junho de 2027<br>
+Guimarães, Portugal<br><br>
+Em breve partilharemos mais detalhes convosco.
+</p>
+
+</div>
+
 </section>
 
 <div class="footer">
-Ana & José · 2027
+José & Ana · Made with love · 2027
 </div>
 
 <script>
-const targetDate = new Date("June 19, 2027 00:00:00").getTime();
+const targetDate = new Date("June 11, 2027 00:00:00").getTime();
 
 function updateCountdown(){
+
 const now = new Date().getTime();
 const diff = targetDate - now;
 
@@ -192,10 +284,11 @@ const hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
 const minutes = Math.floor((diff % (1000*60*60)) / (1000*60));
 const seconds = Math.floor((diff % (1000*60)) / 1000);
 
-document.getElementById("days").innerHTML = days;
-document.getElementById("hours").innerHTML = hours;
-document.getElementById("minutes").innerHTML = minutes;
-document.getElementById("seconds").innerHTML = seconds;
+document.getElementById("days").innerText = days;
+document.getElementById("hours").innerText = hours;
+document.getElementById("minutes").innerText = minutes;
+document.getElementById("seconds").innerText = seconds;
+
 }
 
 setInterval(updateCountdown,1000);
