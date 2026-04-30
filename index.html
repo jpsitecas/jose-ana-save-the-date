@@ -14,12 +14,67 @@ padding:0;
 box-sizing:border-box;
 }
 
+html{
+scroll-behavior:smooth;
+}
+
 body{
 font-family:'Montserrat',sans-serif;
 background:#eef1e8;
 color:#2f352c;
 line-height:1.6;
 }
+
+/* MENU */
+
+.navbar{
+position:sticky;
+top:0;
+z-index:100;
+background:rgba(238,241,232,.92);
+backdrop-filter:blur(10px);
+border-bottom:1px solid rgba(47,53,44,.08);
+}
+
+.nav-inner{
+max-width:1200px;
+margin:0 auto;
+padding:18px 20px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:20px;
+}
+
+.logo{
+font-family:'Cormorant Garamond',serif;
+font-size:28px;
+font-weight:500;
+letter-spacing:.5px;
+white-space:nowrap;
+}
+
+.menu{
+display:flex;
+gap:26px;
+align-items:center;
+}
+
+.menu a{
+text-decoration:none;
+color:#2f352c;
+font-size:13px;
+letter-spacing:2px;
+text-transform:uppercase;
+opacity:.75;
+transition:.25s ease;
+}
+
+.menu a:hover{
+opacity:1;
+}
+
+/* WRAPPER */
 
 .wrapper{
 max-width:1200px;
@@ -83,7 +138,7 @@ display:block;
 
 .count-section{
 text-align:center;
-margin-bottom:80px;
+margin-bottom:90px;
 }
 
 .count-title{
@@ -122,12 +177,13 @@ margin-top:10px;
 opacity:.6;
 }
 
-/* TEXT */
+/* GENERAL SECTIONS */
 
-.section{
+.page-section{
+scroll-margin-top:90px;
 text-align:center;
-max-width:800px;
-margin:0 auto 70px;
+max-width:1000px;
+margin:0 auto 90px;
 padding:0 20px;
 }
 
@@ -141,6 +197,8 @@ margin-bottom:18px;
 p{
 font-size:19px;
 line-height:1.9;
+max-width:760px;
+margin:auto;
 }
 
 .card{
@@ -148,17 +206,51 @@ background:white;
 padding:55px 35px;
 border-radius:28px;
 box-shadow:0 14px 35px rgba(0,0,0,.08);
-max-width:760px;
-margin:0 auto;
+max-width:900px;
+margin:35px auto 0;
 text-align:center;
+}
+
+.cards-grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:24px;
+margin-top:38px;
+}
+
+.info-card{
+background:white;
+padding:38px 28px;
+border-radius:24px;
+box-shadow:0 12px 30px rgba(0,0,0,.07);
+text-align:left;
+}
+
+.info-card h3{
+font-family:'Cormorant Garamond',serif;
+font-size:34px;
+font-weight:500;
+margin-bottom:12px;
+}
+
+.info-card p{
+font-size:16px;
+line-height:1.8;
+margin:0;
+}
+
+.placeholder{
+opacity:.72;
 }
 
 .footer{
 text-align:center;
-padding-top:70px;
+padding-top:40px;
 font-size:14px;
 opacity:.65;
 }
+
+/* ANIMATION */
 
 @keyframes titleRise{
 from{
@@ -170,33 +262,80 @@ opacity:1;
 transform:translateY(0);
 }
 }
-  
+
 /* MOBILE */
 
 @media(max-width:900px){
 
-h1{font-size:68px;}
-.date{font-size:18px;}
+.nav-inner{
+flex-direction:column;
+gap:12px;
+padding:15px 14px;
+}
+
+.logo{
+font-size:24px;
+}
+
+.menu{
+gap:14px;
+flex-wrap:wrap;
+justify-content:center;
+}
+
+.menu a{
+font-size:11px;
+letter-spacing:1.4px;
+}
+
+.wrapper{
+padding:25px 14px 60px;
+}
+
+h1{
+font-size:68px;
+}
+
+.date{
+font-size:18px;
+}
 
 .photo-box img{
 height:540px;
 object-position:center center;
 }
 
-.count-title{font-size:42px;}
-.box{min-width:95px;}
-.num{font-size:30px;}
+.count-title{
+font-size:42px;
+}
 
-h2{font-size:42px;}
-p{font-size:16px;}
+.box{
+min-width:95px;
+}
+
+.num{
+font-size:30px;
+}
+
+h2{
+font-size:42px;
+}
+
+p{
+font-size:16px;
+}
+
+.cards-grid{
+grid-template-columns:1fr;
+}
+
+.info-card{
+text-align:center;
+}
 
 }
 
 @media(max-width:600px){
-
-.wrapper{
-padding:25px 14px 60px;
-}
 
 h1{
 font-size:52px;
@@ -243,26 +382,49 @@ h2{
 font-size:36px;
 }
 
+.card{
+padding:38px 24px;
+}
+
+.info-card h3{
+font-size:30px;
+}
+
 }
 </style>
 </head>
 
 <body>
 
+<nav class="navbar">
+<div class="nav-inner">
+<div class="logo">Ana & José</div>
+
+<div class="menu">
+<a href="#inicio">Início</a>
+<a href="#como-chegar">Como chegar</a>
+<a href="#onde-ficar">Onde ficar</a>
+<a href="#informacoes">Informações</a>
+</div>
+</div>
+</nav>
+
 <div class="wrapper">
+
+<section id="inicio">
 
 <div class="top">
 <div class="small">Save the Date</div>
 <h1>Ana & José</h1>
-<div class="date">19 de Junho de 2027 · Guimarães</div>
+<div class="date">11 de Junho de 2027 · Guimarães</div>
 </div>
 
 <div class="photo-box">
-<img src="foto_casal.jpeg" alt="Ana & José">
+<img src="foto-casal.jpg" alt="Ana e José">
 </div>
 
 <div class="count-section">
-<div class="count-title">A contagem decrescente começou</div>
+<div class="count-title">Falta pouco</div>
 
 <div class="countdown">
 
@@ -289,21 +451,107 @@ font-size:36px;
 </div>
 </div>
 
-<div class="section">
+</section>
+
+<section class="page-section">
+
 <h2>Um dia inesquecível</h2>
+
 <p>
-Estamos ansiosos por celebrar este momento especial convosco. Reservem esta data e juntem-se a nós neste dia único.
+Estamos ansiosos por celebrar este momento especial convosco.
+Reservem esta data e juntem-se a nós neste dia único.
+</p>
+
+</section>
+
+<section id="como-chegar" class="page-section">
+
+<h2>Como chegar</h2>
+
+<p class="placeholder">
+Em breve partilharemos aqui todos os detalhes sobre os locais da cerimónia e da celebração,
+incluindo moradas, horários e indicações úteis para chegarem sem preocupações.
+</p>
+
+<div class="cards-grid">
+
+<div class="info-card">
+<h3>Cerimónia</h3>
+<p class="placeholder">
+Local, morada e horário serão adicionados aqui brevemente.
 </p>
 </div>
 
-<div class="card">
-<h2>Reserve esta data</h2>
-<p>
-11 de Junho de 2027<br>
-Guimarães, Portugal<br><br>
-Em breve partilharemos todos os detalhes convosco.
+<div class="info-card">
+<h3>Celebração</h3>
+<p class="placeholder">
+Local da festa, morada e indicações serão adicionados aqui brevemente.
 </p>
 </div>
+
+</div>
+
+</section>
+
+<section id="onde-ficar" class="page-section">
+
+<h2>Onde ficar</h2>
+
+<p class="placeholder">
+Para quem vem de fora ou quiser ficar perto da celebração,
+iremos reunir aqui algumas sugestões de alojamento em Guimarães e arredores.
+</p>
+
+<div class="card">
+<p class="placeholder">
+Sugestões de hotéis, alojamentos locais e opções próximas serão adicionadas aqui numa fase seguinte.
+</p>
+</div>
+
+</section>
+
+<section id="informacoes" class="page-section">
+
+<h2>Informações úteis</h2>
+
+<p class="placeholder">
+Aqui reuniremos informações importantes para o dia do casamento,
+para que todos possam viver a celebração da forma mais tranquila possível.
+</p>
+
+<div class="cards-grid">
+
+<div class="info-card">
+<h3>Lista de casamento</h3>
+<p class="placeholder">
+Informação sobre prendas ou contributos será adicionada aqui brevemente.
+</p>
+</div>
+
+<div class="info-card">
+<h3>Dress code</h3>
+<p class="placeholder">
+A indicação de traje será partilhada aqui mais próximo da data.
+</p>
+</div>
+
+<div class="info-card">
+<h3>Babysitting</h3>
+<p class="placeholder">
+Informação sobre apoio às crianças durante a celebração será adicionada aqui.
+</p>
+</div>
+
+<div class="info-card">
+<h3>Outros detalhes</h3>
+<p class="placeholder">
+Qualquer informação adicional relevante ficará disponível nesta secção.
+</p>
+</div>
+
+</div>
+
+</section>
 
 <div class="footer">
 Ana & José · 2027
