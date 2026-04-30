@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>José & Ana | Save the Date</title>
+<title>Ana & José | Save the Date</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;700&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
 *{
@@ -14,104 +14,94 @@ padding:0;
 box-sizing:border-box;
 }
 
-html{
-scroll-behavior:smooth;
-}
-
 body{
 font-family:'Montserrat',sans-serif;
-background:#f8f4ec;
-color:#2f2f2f;
-overflow-x:hidden;
+background:#eef1e8;
+color:#2f352c;
+line-height:1.6;
 }
 
-/* HERO */
+.wrapper{
+max-width:1200px;
+margin:auto;
+padding:40px 20px 80px;
+}
 
-.hero{
-position:relative;
-width:100%;
-height:100vh;
-min-height:760px;
-overflow:hidden;
-display:flex;
-justify-content:center;
-align-items:flex-start;
+/* HEADER */
+
+.top{
 text-align:center;
-color:white;
+padding:30px 20px 40px;
 }
 
-.hero-photo{
-position:absolute;
-width:100%;
-height:100%;
-object-fit:cover;
-object-position:center 38%;
-}
-
-.overlay{
-position:absolute;
-inset:0;
-background:linear-gradient(rgba(0,0,0,.15),rgba(0,0,0,.35));
-}
-
-.hero-inner{
-position:relative;
-z-index:2;
-margin-top:55px;
-padding:20px;
-width:100%;
-}
-
-.top-text{
-font-size:13px;
+.small{
 letter-spacing:5px;
+font-size:13px;
 text-transform:uppercase;
-margin-bottom:12px;
+opacity:.75;
+margin-bottom:16px;
 }
 
 h1{
 font-family:'Cormorant Garamond',serif;
-font-size:110px;
+font-size:96px;
 font-weight:500;
-line-height:.9;
-margin-bottom:8px;
+line-height:.95;
+margin-bottom:12px;
 }
 
 .date{
-font-size:28px;
+font-size:22px;
 letter-spacing:2px;
 font-weight:300;
 }
 
-/* COUNTDOWN */
+/* PHOTO */
 
-.countdown-section{
-padding:70px 20px;
-text-align:center;
+.photo-box{
+margin:20px auto 70px;
+max-width:1050px;
+border-radius:28px;
+overflow:hidden;
+box-shadow:0 18px 45px rgba(0,0,0,.12);
+background:white;
 }
 
-.countdown-title{
+.photo-box img{
+width:100%;
+height:720px;
+object-fit:cover;
+object-position:center 38%;
+display:block;
+}
+
+/* COUNTDOWN */
+
+.count-section{
+text-align:center;
+margin-bottom:80px;
+}
+
+.count-title{
 font-family:'Cormorant Garamond',serif;
 font-size:56px;
-margin-bottom:28px;
+margin-bottom:26px;
+font-weight:500;
 }
 
 .countdown{
 display:flex;
 justify-content:center;
-align-items:center;
 gap:18px;
 flex-wrap:wrap;
-max-width:900px;
-margin:0 auto;
 }
 
 .box{
 background:white;
-padding:22px 24px;
-border-radius:18px;
-min-width:120px;
-box-shadow:0 12px 28px rgba(0,0,0,.08);
+min-width:130px;
+padding:26px 20px;
+border-radius:20px;
+box-shadow:0 10px 25px rgba(0,0,0,.08);
 }
 
 .num{
@@ -124,113 +114,96 @@ line-height:1;
 font-size:12px;
 letter-spacing:3px;
 text-transform:uppercase;
-margin-top:8px;
+margin-top:10px;
 opacity:.6;
 }
 
-/* CONTENT */
+/* TEXT */
 
-section{
-padding:90px 24px;
-max-width:1000px;
-margin:auto;
+.section{
 text-align:center;
+max-width:800px;
+margin:0 auto 70px;
+padding:0 20px;
 }
 
 h2{
 font-family:'Cormorant Garamond',serif;
 font-size:54px;
+font-weight:500;
 margin-bottom:18px;
 }
 
 p{
-font-size:18px;
+font-size:19px;
 line-height:1.9;
-max-width:760px;
-margin:auto;
 }
 
 .card{
 background:white;
 padding:55px 35px;
-border-radius:24px;
-box-shadow:0 14px 35px rgba(0,0,0,.06);
+border-radius:28px;
+box-shadow:0 14px 35px rgba(0,0,0,.08);
+max-width:760px;
+margin:0 auto;
+text-align:center;
 }
 
 .footer{
-padding:55px 20px;
 text-align:center;
+padding-top:70px;
 font-size:14px;
 opacity:.65;
 }
 
-/* ANIMATION */
+/* MOBILE */
 
-@keyframes fadeUp{
-from{
-opacity:0;
-transform:translateY(30px);
+@media(max-width:900px){
+
+h1{font-size:68px;}
+.date{font-size:18px;}
+
+.photo-box img{
+height:540px;
+object-position:center center;
 }
-to{
-opacity:1;
-transform:translateY(0);
+
+.count-title{font-size:42px;}
+.box{min-width:95px;}
+.num{font-size:30px;}
+
+h2{font-size:42px;}
+p{font-size:16px;}
+
 }
-}
 
-/* TABLET */
+@media(max-width:600px){
 
-@media(max-width:1000px){
-
-.hero-inner{
-margin-top:-150px;
+.wrapper{
+padding:25px 14px 60px;
 }
 
 h1{
-font-size:78px;
+font-size:52px;
 }
 
-.date{
-font-size:22px;
-}
-
-.box{
-min-width:100px;
-}
-
-}
-
-/* MOBILE */
-
-@media(max-width:700px){
-
-.hero{
-height:88vh;
-min-height:620px;
-background-position:center center;
-padding:40px 18px;
-}
-
-.hero-inner{
-margin-top:-90px;
-}
-
-.top-text{
+.small{
 font-size:11px;
 letter-spacing:4px;
 }
 
-h1{
-font-size:54px;
-line-height:1;
+.photo-box{
+margin-bottom:45px;
+border-radius:20px;
 }
 
-.date{
-font-size:18px;
-line-height:1.5;
+.photo-box img{
+height:430px;
+object-position:center center;
 }
 
-.countdown-title{
-font-size:40px;
+.count-title{
+font-size:34px;
 }
 
 .countdown{
@@ -239,19 +212,20 @@ gap:12px;
 
 .box{
 min-width:78px;
-padding:16px 12px;
+padding:16px 10px;
 }
 
 .num{
-font-size:28px;
+font-size:26px;
+}
+
+.label{
+font-size:10px;
+letter-spacing:2px;
 }
 
 h2{
-font-size:40px;
-}
-
-p{
-font-size:16px;
+font-size:36px;
 }
 
 }
@@ -260,23 +234,20 @@ font-size:16px;
 
 <body>
 
-<section class="hero">
+<div class="wrapper">
 
-<img src="foto_casal.jpeg" class="hero-photo">
-
-<div class="overlay"></div>
-
-<div class="hero-inner">
-<div class="top-text">Save the Date</div>
-<h1>José & Ana</h1>
-<div class="date">11 de Junho de 2027 · Guimarães</div>
+<div class="top">
+<div class="small">Save the Date</div>
+<h1>Ana & José</h1>
+<div class="date">19 de Junho de 2027 · Guimarães</div>
 </div>
 
-</section>
+<div class="photo-box">
+<img src="foto_casal.jpeg" alt="Ana & José">
+</div>
 
-<section class="countdown-section">
-
-<div class="countdown-title">Falta pouco</div>
+<div class="count-section">
+<div class="count-title">A contagem decrescente começou</div>
 
 <div class="countdown">
 
@@ -301,28 +272,35 @@ font-size:16px;
 </div>
 
 </div>
+</div>
 
-</section>
-
-<section>
-
+<div class="section">
 <h2>Um dia inesquecível</h2>
-
 <p>
-Estamos ansiosos por celebrar este momento especial convosco.
-Reservem esta data e juntem-se a nós neste dia único.
+Estamos ansiosos por celebrar este momento especial convosco. Reservem esta data e juntem-se a nós neste dia único.
 </p>
+</div>
 
-</section>
+<div class="card">
+<h2>Reserve esta data</h2>
+<p>
+11 de Junho de 2027<br>
+Guimarães, Portugal<br><br>
+Em breve partilharemos todos os detalhes convosco.
+</p>
+</div>
 
 <div class="footer">
-José & Ana · 2027
+Ana & José · 2027
+</div>
+
 </div>
 
 <script>
 const targetDate = new Date("June 11, 2027 00:00:00").getTime();
 
 function updateCountdown(){
+
 const now = new Date().getTime();
 const diff = targetDate - now;
 
