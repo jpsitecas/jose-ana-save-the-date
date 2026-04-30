@@ -218,6 +218,66 @@ gap:24px;
 margin-top:38px;
 }
 
+.location-grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:28px;
+margin-top:42px;
+}
+
+.location-card{
+background:white;
+padding:38px 28px;
+border-radius:28px;
+box-shadow:0 14px 35px rgba(0,0,0,.08);
+text-align:left;
+}
+
+.location-card h3{
+font-family:'Cormorant Garamond',serif;
+font-size:36px;
+font-weight:500;
+margin-bottom:14px;
+}
+
+.location-card p{
+font-size:16px;
+line-height:1.8;
+margin:0 0 22px;
+}
+
+.map-button{
+display:inline-block;
+text-decoration:none;
+background:#2f352c;
+color:white;
+padding:13px 20px;
+border-radius:999px;
+font-size:12px;
+letter-spacing:2px;
+text-transform:uppercase;
+margin-bottom:22px;
+transition:.25s ease;
+}
+
+.map-button:hover{
+background:#56634a;
+}
+
+.map-box{
+width:100%;
+height:280px;
+border-radius:20px;
+overflow:hidden;
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+}
+
+.map-box iframe{
+width:100%;
+height:100%;
+border:0;
+}
+  
 .info-card{
 background:white;
 padding:38px 28px;
@@ -468,25 +528,53 @@ Reservem esta data e juntem-se a nós neste dia único.
 
 <h2>Como chegar</h2>
 
-<p class="placeholder">
-Em breve partilharemos aqui todos os detalhes sobre os locais da cerimónia e da celebração,
-incluindo moradas, horários e indicações úteis para chegarem sem preocupações.
+<p>
+Aqui encontram as indicações para os dois momentos principais do nosso dia:
+a cerimónia e a celebração.
 </p>
 
-<div class="cards-grid">
+<div class="location-grid">
 
-<div class="info-card">
+<div class="location-card">
 <h3>Cerimónia</h3>
-<p class="placeholder">
-Local, morada e horário serão adicionados aqui brevemente.
+<p>
+<strong>Igreja Matriz de São João</strong><br>
+R. Joaquim Pinto 333<br>
+Caldas de Vizela
 </p>
+
+<a class="map-button" href="https://www.google.com/maps/search/?api=1&query=Igreja%20Matriz%20de%20S%C3%A3o%20Jo%C3%A3o%20R.%20Joaquim%20Pinto%20333%20Caldas%20de%20Vizela" target="_blank">
+Abrir no Google Maps
+</a>
+
+<div class="map-box">
+<iframe
+src="https://www.google.com/maps?q=Igreja%20Matriz%20de%20S%C3%A3o%20Jo%C3%A3o%2C%20R.%20Joaquim%20Pinto%20333%2C%20Caldas%20de%20Vizela&output=embed"
+loading="lazy"
+referrerpolicy="no-referrer-when-downgrade">
+</iframe>
+</div>
 </div>
 
-<div class="info-card">
+<div class="location-card">
 <h3>Celebração</h3>
-<p class="placeholder">
-Local da festa, morada e indicações serão adicionados aqui brevemente.
+<p>
+<strong>Casa de Sezim</strong><br>
+R. de Sezim<br>
+4811-909 Guimarães
 </p>
+
+<a class="map-button" href="https://www.google.com/maps/search/?api=1&query=Casa%20de%20Sezim%20R.%20de%20Sezim%204811-909%20Guimar%C3%A3es" target="_blank">
+Abrir no Google Maps
+</a>
+
+<div class="map-box">
+<iframe
+src="https://www.google.com/maps?q=Casa%20de%20Sezim%2C%20R.%20de%20Sezim%2C%204811-909%20Guimar%C3%A3es&output=embed"
+loading="lazy"
+referrerpolicy="no-referrer-when-downgrade">
+</iframe>
+</div>
 </div>
 
 </div>
