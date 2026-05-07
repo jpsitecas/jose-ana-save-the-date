@@ -590,6 +590,121 @@ padding:36px 22px;
 }
   
 }
+
+/* ===== RSVP FORM NOVO ===== */
+
+.rsvp-form{
+max-width:980px;
+margin:42px auto 0;
+padding:34px 34px 24px;
+background:#f3f5ef;
+border-radius:8px;
+text-align:left;
+}
+
+.rsvp-grid{
+display:grid;
+gap:28px;
+margin-bottom:26px;
+}
+
+.rsvp-grid.two-cols{
+grid-template-columns:1fr 1fr;
+}
+
+.rsvp-grid.one-col{
+grid-template-columns:1fr;
+}
+
+.rsvp-field{
+width:100%;
+}
+
+.rsvp-field label{
+display:block;
+margin-bottom:10px;
+font-size:14px;
+font-weight:400;
+letter-spacing:.2px;
+color:#4a5145;
+text-transform:none;
+}
+
+.rsvp-field input,
+.rsvp-field select,
+.rsvp-field textarea{
+width:100%;
+display:block;
+padding:14px 14px;
+font-family:'Montserrat',sans-serif;
+font-size:15px;
+color:#2f352c;
+background:#ffffff;
+border:1px solid rgba(47,53,44,.45);
+border-radius:0;
+outline:none;
+box-shadow:none;
+appearance:none;
+-webkit-appearance:none;
+}
+
+.rsvp-field textarea{
+resize:vertical;
+min-height:110px;
+}
+
+.rsvp-field input:focus,
+.rsvp-field select:focus,
+.rsvp-field textarea:focus{
+border-color:#2f352c;
+background:#fff;
+}
+
+.rsvp-submit{
+display:block;
+width:100%;
+margin-top:8px;
+padding:18px 20px;
+border:none;
+background:#7d8780;
+color:#fff;
+font-family:'Montserrat',sans-serif;
+font-size:16px;
+font-weight:400;
+letter-spacing:.3px;
+cursor:pointer;
+transition:background .25s ease;
+border-radius:0;
+}
+
+.rsvp-submit:hover{
+background:#69736d;
+}
+
+/* mobile */
+@media(max-width:900px){
+
+.rsvp-form{
+padding:24px 18px 18px;
+}
+
+.rsvp-grid.two-cols{
+grid-template-columns:1fr;
+}
+
+.rsvp-grid{
+gap:18px;
+margin-bottom:18px;
+}
+
+.rsvp-field input,
+.rsvp-field select,
+.rsvp-field textarea{
+font-size:16px;
+}
+
+}  
+  
 </style>
 </head>
 
@@ -735,45 +850,53 @@ Pedimos que confirmem a vossa presença através do formulário abaixo.
 
 <form class="rsvp-form" action="https://formspree.io/f/xaqvdywd" method="POST">
 
-<div class="form-row">
-<div class="form-field">
-<label for="nome">Nome</label>
-<input type="text" id="nome" name="Nome" required>
+<input type="hidden" name="_subject" value="Nova confirmação RSVP - Ana & José">
+
+<div class="rsvp-grid two-cols">
+  <div class="rsvp-field">
+    <label for="nome">Nome</label>
+    <input type="text" id="nome" name="Nome" required>
+  </div>
+
+  <div class="rsvp-field">
+    <label for="convidados">Nº convidados a confirmar</label>
+    <input type="number" id="convidados" name="Número de convidados" min="1" required>
+  </div>
 </div>
 
-<div class="form-field">
-<label for="convidados">Nº de convidados a confirmar</label>
-<input type="number" id="convidados" name="Número de convidados" min="1" required>
-</div>
-</div>
-
-<div class="form-row">
-<div class="form-field">
-<label for="email">Email</label>
-<input type="email" id="email" name="Email" required>
+<div class="rsvp-grid one-col">
+  <div class="rsvp-field">
+    <label for="email">Email *</label>
+    <input type="email" id="email" name="Email" required>
+  </div>
 </div>
 
-<div class="form-field">
-<label for="presenca">Confirmas a tua presença?</label>
-<select id="presenca" name="Confirma presença" required>
-<option value="">Selecionar</option>
-<option value="Sim, com muito gosto">Sim, com muito gosto</option>
-<option value="Infelizmente não poderei estar presente">Infelizmente não poderei estar presente</option>
-</select>
-</div>
-</div>
-
-<div class="form-field">
-<label for="restricoes">Restrições alimentares</label>
-<textarea id="restricoes" name="Restrições alimentares" rows="3" placeholder="Indica aqui qualquer restrição alimentar relevante."></textarea>
+<div class="rsvp-grid one-col">
+  <div class="rsvp-field">
+    <label for="presenca">Confirmas a tua presença?</label>
+    <select id="presenca" name="Confirma presença" required>
+      <option value="">Selecionar</option>
+      <option value="Sim, com muito gosto">Sim, com muito gosto</option>
+      <option value="Infelizmente não poderei estar presente">Infelizmente não poderei estar presente</option>
+    </select>
+  </div>
 </div>
 
-<div class="form-field">
-<label for="mensagem">Mensagem</label>
-<textarea id="mensagem" name="Mensagem" rows="4" placeholder="Opcional"></textarea>
+<div class="rsvp-grid one-col">
+  <div class="rsvp-field">
+    <label for="restricoes">Restrições alimentares</label>
+    <textarea id="restricoes" name="Restrições alimentares" rows="4" placeholder="Indica aqui qualquer restrição alimentar relevante."></textarea>
+  </div>
 </div>
 
-<button type="submit" class="rsvp-submit">Enviar confirmação</button>
+<div class="rsvp-grid one-col">
+  <div class="rsvp-field">
+    <label for="mensagem">Deixa-nos uma mensagem</label>
+    <textarea id="mensagem" name="Mensagem" rows="5" placeholder="Opcional"></textarea>
+  </div>
+</div>
+
+<button type="submit" class="rsvp-submit">Enviar</button>
 
 </form>
 
