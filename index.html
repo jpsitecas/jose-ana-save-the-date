@@ -612,6 +612,10 @@ margin-bottom:26px;
 grid-template-columns:1fr 1fr;
 }
 
+.rsvp-grid.three-cols{
+grid-template-columns:repeat(3, 1fr);
+}
+
 .rsvp-grid.one-col{
 grid-template-columns:1fr;
 }
@@ -689,6 +693,10 @@ padding:24px 18px 18px;
 }
 
 .rsvp-grid.two-cols{
+grid-template-columns:1fr;
+}
+
+.rsvp-grid.three-cols{
 grid-template-columns:1fr;
 }
 
@@ -859,26 +867,29 @@ Pedimos que confirmem a vossa presença através do formulário abaixo.
   </div>
 
   <div class="rsvp-field">
-    <label for="convidados">Nº convidados a confirmar</label>
-    <input type="number" id="convidados" name="Número de convidados" min="1" required>
-  </div>
-</div>
-
-<div class="rsvp-grid one-col">
-  <div class="rsvp-field">
-    <label for="email">Email *</label>
-    <input type="email" id="email" name="Email" required>
-  </div>
-</div>
-
-<div class="rsvp-grid one-col">
-  <div class="rsvp-field">
     <label for="presenca">Confirmas a tua presença?</label>
     <select id="presenca" name="Confirma presença" required>
       <option value="">Selecionar</option>
       <option value="Sim, com muito gosto">Sim, com muito gosto</option>
       <option value="Infelizmente não poderei estar presente">Infelizmente não poderei estar presente</option>
     </select>
+  </div>
+</div>
+
+<div class="rsvp-grid three-cols">
+  <div class="rsvp-field">
+    <label for="adultos">Nº de adultos</label>
+    <input type="number" id="adultos" name="Número de adultos" min="0" value="1" required>
+  </div>
+
+  <div class="rsvp-field">
+    <label for="criancas03">Nº de crianças 0-3 anos</label>
+    <input type="number" id="criancas03" name="Número de crianças 0-3 anos" min="0" value="0" required>
+  </div>
+
+  <div class="rsvp-field">
+    <label for="criancas49">Nº de crianças 4-9 anos</label>
+    <input type="number" id="criancas49" name="Número de crianças 4-9 anos" min="0" value="0" required>
   </div>
 </div>
 
