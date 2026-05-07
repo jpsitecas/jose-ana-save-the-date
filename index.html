@@ -500,6 +500,95 @@ padding:38px 24px;
 font-size:30px;
 }
 
+/* RSVP FORM */
+.rsvp-form{
+background:white;
+padding:48px 38px;
+border-radius:28px;
+box-shadow:0 14px 35px rgba(0,0,0,.08);
+max-width:850px;
+margin:42px auto 0;
+text-align:left;
+}
+
+.form-row{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:24px;
+}
+
+.form-field{
+margin-bottom:26px;
+}
+
+.form-field label{
+display:block;
+font-size:12px;
+letter-spacing:2px;
+text-transform:uppercase;
+margin-bottom:10px;
+opacity:.75;
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea{
+width:100%;
+border:none;
+border-bottom:1px solid rgba(47,53,44,.35);
+background:transparent;
+padding:12px 2px;
+font-family:'Montserrat',sans-serif;
+font-size:16px;
+color:#2f352c;
+outline:none;
+border-radius:0;
+}
+
+.form-field textarea{
+resize:vertical;
+min-height:90px;
+}
+
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus{
+border-bottom-color:#2f352c;
+}
+
+.rsvp-submit{
+width:100%;
+margin-top:12px;
+border:none;
+background:#2f352c;
+color:white;
+padding:18px 24px;
+border-radius:999px;
+font-family:'Montserrat',sans-serif;
+font-size:13px;
+letter-spacing:2px;
+text-transform:uppercase;
+cursor:pointer;
+transition:.25s ease;
+}
+
+.rsvp-submit:hover{
+background:#56634a;
+}
+
+@media(max-width:900px){
+
+.form-row{
+grid-template-columns:1fr;
+gap:0;
+}
+
+.rsvp-form{
+padding:36px 22px;
+}
+
+}
+  
 }
 </style>
 </head>
@@ -513,6 +602,7 @@ font-size:30px;
 <div class="menu">
 <a href="#inicio">Início</a>
 <a href="#como-chegar">Como chegar</a>
+<a href="#rsvp">RSVP</a>
 <a href="#onde-ficar">Onde ficar</a>
 <a href="#informacoes">Informações</a>
 </div>
@@ -631,6 +721,61 @@ referrerpolicy="no-referrer-when-downgrade">
 </iframe>
 </div>
 </div>
+
+</section>
+
+<section id="rsvp" class="page-section">
+
+<h2>Confirmação de presença</h2>
+
+<p>
+Ficaremos muito felizes por celebrar este dia convosco.
+Pedimos que confirmem a vossa presença através do formulário abaixo.
+</p>
+
+<form class="rsvp-form" action="https://formspree.io/f/xaqvdywd" method="POST">
+
+<div class="form-row">
+<div class="form-field">
+<label for="nome">Nome</label>
+<input type="text" id="nome" name="Nome" required>
+</div>
+
+<div class="form-field">
+<label for="convidados">Nº de convidados a confirmar</label>
+<input type="number" id="convidados" name="Número de convidados" min="1" required>
+</div>
+</div>
+
+<div class="form-row">
+<div class="form-field">
+<label for="email">Email</label>
+<input type="email" id="email" name="Email" required>
+</div>
+
+<div class="form-field">
+<label for="presenca">Confirmas a tua presença?</label>
+<select id="presenca" name="Confirma presença" required>
+<option value="">Selecionar</option>
+<option value="Sim, com muito gosto">Sim, com muito gosto</option>
+<option value="Infelizmente não poderei estar presente">Infelizmente não poderei estar presente</option>
+</select>
+</div>
+</div>
+
+<div class="form-field">
+<label for="restricoes">Restrições alimentares</label>
+<textarea id="restricoes" name="Restrições alimentares" rows="3" placeholder="Indica aqui qualquer restrição alimentar relevante."></textarea>
+</div>
+
+<div class="form-field">
+<label for="mensagem">Mensagem</label>
+<textarea id="mensagem" name="Mensagem" rows="4" placeholder="Opcional"></textarea>
+</div>
+
+<button type="submit" class="rsvp-submit">Enviar confirmação</button>
+
+</form>
 
 </section>
 
