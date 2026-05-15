@@ -749,18 +749,20 @@ justify-content:center;
 align-items:center;
 overflow:hidden;
 background:transparent;
+perspective:1200px;
 }
 
 .curtain{
 position:absolute;
 top:0;
-width:52%;
+width:54%;
 height:100%;
 z-index:1;
 transition:
-transform 1.9s cubic-bezier(.77,0,.18,1),
-filter 1.9s cubic-bezier(.77,0,.18,1);
+transform 2.1s cubic-bezier(.68,-0.05,.22,1),
+filter 2.1s cubic-bezier(.68,-0.05,.22,1);
 filter:brightness(1);
+will-change:transform, filter;
 }
 
 /* Cortina esquerda */
@@ -868,13 +870,23 @@ opacity:.95;
 
 /* Estado aberto */
 .intro-animation.open .curtain-left{
-transform:translateX(-104%) skewX(-2deg);
-filter:brightness(.9);
+transform:
+translateX(-92%)
+scaleX(.38)
+skewX(-8deg)
+rotateY(18deg);
+transform-origin:left center;
+filter:brightness(.72);
 }
 
 .intro-animation.open .curtain-right{
-transform:translateX(104%) skewX(2deg);
-filter:brightness(.9);
+transform:
+translateX(92%)
+scaleX(.38)
+skewX(8deg)
+rotateY(-18deg);
+transform-origin:right center;
+filter:brightness(.72);
 }
 
 .intro-animation.open .intro-monogram{
