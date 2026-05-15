@@ -736,12 +736,193 @@ max-width:980px;
 }
   
 }  
+
+/* INTRO CURTAIN ANIMATION */
+
+.intro-animation{
+position:fixed;
+inset:0;
+z-index:9999;
+pointer-events:none;
+display:flex;
+justify-content:center;
+align-items:center;
+overflow:hidden;
+background:#2f352c;
+}
+
+.curtain{
+position:absolute;
+top:0;
+width:52%;
+height:100%;
+z-index:1;
+transition:
+transform 1.9s cubic-bezier(.77,0,.18,1),
+filter 1.9s cubic-bezier(.77,0,.18,1);
+filter:brightness(1);
+}
+
+/* Cortina esquerda */
+.curtain-left{
+left:0;
+background:
+linear-gradient(90deg,
+#202719 0%,
+#3f4a36 8%,
+#27301f 16%,
+#566348 27%,
+#2b3424 39%,
+#4e5c41 52%,
+#26301f 64%,
+#5a684a 78%,
+#313b2a 90%,
+#202719 100%);
+box-shadow:
+inset -22px 0 38px rgba(0,0,0,.38),
+inset 18px 0 45px rgba(255,255,255,.06);
+}
+
+/* Cortina direita */
+.curtain-right{
+right:0;
+background:
+linear-gradient(90deg,
+#202719 0%,
+#313b2a 10%,
+#5a684a 22%,
+#26301f 36%,
+#4e5c41 48%,
+#2b3424 61%,
+#566348 73%,
+#27301f 84%,
+#3f4a36 92%,
+#202719 100%);
+box-shadow:
+inset 22px 0 38px rgba(0,0,0,.38),
+inset -18px 0 45px rgba(255,255,255,.06);
+}
+
+/* Sombra central onde as cortinas se encontram */
+.intro-animation:before{
+content:"";
+position:absolute;
+top:0;
+left:50%;
+transform:translateX(-50%);
+width:26px;
+height:100%;
+z-index:3;
+background:linear-gradient(
+90deg,
+rgba(0,0,0,0),
+rgba(0,0,0,.45),
+rgba(0,0,0,0)
+);
+opacity:.9;
+transition:opacity 1.2s ease;
+}
+
+/* Vinheta para dar profundidade */
+.intro-animation:after{
+content:"";
+position:absolute;
+inset:0;
+z-index:2;
+background:
+radial-gradient(circle at center, rgba(255,255,255,.06), transparent 32%),
+radial-gradient(circle at center, transparent 45%, rgba(0,0,0,.32) 100%);
+pointer-events:none;
+transition:opacity 1.2s ease;
+}
+
+/* Monograma no centro */
+.intro-monogram{
+position:relative;
+z-index:4;
+width:160px;
+height:160px;
+border-radius:999px;
+display:flex;
+justify-content:center;
+align-items:center;
+background:rgba(238,241,232,.08);
+border:1px solid rgba(255,255,255,.28);
+box-shadow:
+0 18px 45px rgba(0,0,0,.28),
+inset 0 0 35px rgba(255,255,255,.05);
+opacity:1;
+transform:scale(1);
+transition:
+opacity .8s ease,
+transform .8s ease;
+}
+
+.intro-monogram img{
+width:112px;
+height:auto;
+display:block;
+filter:brightness(0) invert(1);
+opacity:.95;
+}
+
+/* Estado aberto */
+.intro-animation.open .curtain-left{
+transform:translateX(-104%) skewX(-2deg);
+filter:brightness(.9);
+}
+
+.intro-animation.open .curtain-right{
+transform:translateX(104%) skewX(2deg);
+filter:brightness(.9);
+}
+
+.intro-animation.open .intro-monogram{
+opacity:0;
+transform:scale(.82);
+}
+
+.intro-animation.open:before,
+.intro-animation.open:after{
+opacity:0;
+}
+
+.intro-animation.hidden{
+display:none;
+}
+
+/* Mobile */
+@media(max-width:700px){
+
+.intro-monogram{
+width:126px;
+height:126px;
+}
+
+.intro-monogram img{
+width:88px;
+}
+
+.curtain{
+width:53%;
+}
+
+}
   
 </style>
 </head>
 
 <body>
 
+<div id="intro-animation" class="intro-animation">
+  <div class="curtain curtain-left"></div>
+  <div class="curtain curtain-right"></div>
+
+  <div class="intro-monogram">
+    <img src="monograma.png" alt="Monograma Ana e José">
+  </div>
+</div>
+  
 <nav class="navbar">
 <div class="nav-inner">
 <a class="logo" href="https://jpsitecas.github.io/jose-ana-save-the-date/">Ana & José</a>
@@ -1080,5 +1261,21 @@ setInterval(updateCountdown,1000);
 updateCountdown();
 </script>
 
+<script>
+window.addEventListener("load", function(){
+  const intro = document.getElementById("intro-animation");
+
+  if(intro){
+    setTimeout(function(){
+      intro.classList.add("open");
+    }, 650);
+
+    setTimeout(function(){
+      intro.classList.add("hidden");
+    }, 2700);
+  }
+});
+</script>
+  
 </body>
 </html>
