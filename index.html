@@ -1254,32 +1254,81 @@ width:53%;
 
 }
 
-.stay-grid{
-display:grid;
-grid-template-columns:repeat(3,minmax(0,1fr));
-gap:24px;
+.stay-list{
+display:flex;
+flex-direction:column;
+gap:26px;
 margin-top:42px;
 }
 
 .stay-card{
 background:white;
-padding:36px 26px;
+padding:18px;
 border-radius:24px;
 box-shadow:0 12px 30px rgba(0,0,0,.07);
+display:grid;
+grid-template-columns:220px 1fr;
+gap:28px;
+align-items:center;
 text-align:left;
 }
 
-.stay-card h3{
-font-family:'Cormorant Garamond',serif;
-font-size:32px;
-font-weight:500;
-margin-bottom:14px;
+.stay-card img{
+width:220px;
+height:150px;
+object-fit:cover;
+border-radius:18px;
+display:block;
 }
 
-.stay-card p{
+.stay-content h3{
+font-family:'Cormorant Garamond',serif;
+font-size:34px;
+font-weight:500;
+margin-bottom:10px;
+}
+
+.stay-content p{
 font-size:16px;
 line-height:1.8;
-margin:0;
+margin:0 0 18px;
+}
+
+.stay-button{
+display:inline-block;
+text-decoration:none;
+background:#2f352c;
+color:white;
+padding:12px 18px;
+border-radius:999px;
+font-size:12px;
+letter-spacing:2px;
+text-transform:uppercase;
+transition:.25s ease;
+}
+
+.stay-button:hover{
+background:#56634a;
+}
+
+@media(max-width:900px){
+
+.stay-card{
+grid-template-columns:1fr;
+text-align:center;
+padding:18px;
+}
+
+.stay-card img{
+width:100%;
+height:210px;
+}
+
+.stay-content p{
+margin-left:auto;
+margin-right:auto;
+}
+
 }
   
 </style>
@@ -1495,36 +1544,59 @@ Para quem vem de fora ou quiser ficar perto da celebração, reunimos algumas su
 Estas opções são apenas sugestões, para que possam escolher o que fizer mais sentido para vocês.
 </p>
 
-<div class="stay-grid">
+<div class="stay-list">
 
 <div class="stay-card">
+<img src="santa_clara.jpg" alt="The Lince Santa Clara">
+
+<div class="stay-content">
 <h3>The Lince Santa Clara</h3>
 <p>
 <strong>Vila do Conde</strong><br>
 A cerca de 13 minutos de carro da Quinta Alferes de Castro.
 </p>
+
+<a class="stay-button" href="https://thelincehotels.com/santaclara/" target="_blank">
+Ver alojamento
+</a>
+</div>
 </div>
 
 <div class="stay-card">
+<img src="villaC.jpeg" alt="Villa C Boutique Hotel">
+
+<div class="stay-content">
 <h3>Villa C Boutique Hotel</h3>
 <p>
 <strong>Vila do Conde</strong><br>
 A cerca de 13 minutos de carro da Quinta Alferes de Castro.
 </p>
+
+<a class="stay-button" href="https://www.villacboutiquehotel.com/" target="_blank">
+Ver alojamento
+</a>
+</div>
 </div>
 
 <div class="stay-card">
+<img src="vermar.jpg" alt="Axis Vermar Conference & Beach Hotel">
+
+<div class="stay-content">
 <h3>Axis Vermar Conference & Beach Hotel</h3>
 <p>
 <strong>Póvoa do Varzim</strong><br>
 A cerca de 17 minutos de carro da Quinta Alferes de Castro.
 </p>
+
+<a class="stay-button" href="https://www.axishoteis.com/en/axis-vermar.html" target="_blank">
+Ver alojamento
+</a>
+</div>
 </div>
 
 </div>
 
 </section>
-
 <section id="informacoes" class="page-section">
 
 <h2>Informações úteis</h2>
