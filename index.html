@@ -2000,13 +2000,13 @@ function setupScratchCards(){
       ctx.clip();
 
       const gradient = ctx.createRadialGradient(
-        centerX - 35, centerY - 35, 20,
-        centerX, centerY, radius
-      );
+  centerX - 35, centerY - 35, 20,
+  centerX, centerY, radius
+);
 
-      gradient.addColorStop(0, "#6b765d");
-      gradient.addColorStop(0.42, "#3f4a36");
-      gradient.addColorStop(1, "#26301f");
+gradient.addColorStop(0, "#a8b39a");
+gradient.addColorStop(0.42, "#7e8b70");
+gradient.addColorStop(1, "#5f6c53");
 
       ctx.fillStyle = gradient;
       ctx.fillRect(0, 0, width, height);
@@ -2024,16 +2024,17 @@ function setupScratchCards(){
       ctx.stroke();
 
       if(monogram.complete){
-        const imgSize = radius * 0.92;
-        ctx.globalAlpha = 0.86;
-        ctx.drawImage(
-          monogram,
-          centerX - imgSize / 2,
-          centerY - imgSize / 2 - 6,
-          imgSize,
-          imgSize
-        );
-        ctx.globalAlpha = 1;
+  const imgSize = radius * 0.92;
+  ctx.globalAlpha = 0.97;
+  ctx.drawImage(
+    monogram,
+    centerX - imgSize / 2,
+    centerY - imgSize / 2 - 6,
+    imgSize,
+    imgSize
+  );
+  ctx.globalAlpha = 1;
+}
       } else {
         ctx.fillStyle = "rgba(255,255,255,.9)";
         ctx.font = "36px Cormorant Garamond, serif";
