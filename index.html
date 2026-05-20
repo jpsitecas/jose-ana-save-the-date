@@ -1330,6 +1330,130 @@ margin-right:auto;
 }
 
 }
+
+/* SCRATCH DATE SECTION */
+
+.scratch-section{
+text-align:center;
+margin:0 auto 95px;
+padding:0 20px;
+max-width:1000px;
+}
+
+.scratch-section h2{
+font-family:'Cormorant Garamond',serif;
+font-size:56px;
+font-weight:500;
+margin-bottom:18px;
+}
+
+.scratch-section p{
+font-size:18px;
+line-height:1.8;
+max-width:720px;
+margin:0 auto 38px;
+}
+
+.scratch-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:24px;
+max-width:850px;
+margin:0 auto;
+}
+
+.scratch-card{
+position:relative;
+height:190px;
+background:white;
+border-radius:24px;
+box-shadow:0 12px 30px rgba(0,0,0,.08);
+overflow:hidden;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+}
+
+.scratch-label{
+font-size:12px;
+letter-spacing:3px;
+text-transform:uppercase;
+opacity:.55;
+margin-bottom:12px;
+}
+
+.scratch-value{
+font-family:'Cormorant Garamond',serif;
+font-size:54px;
+font-weight:500;
+color:#2f352c;
+line-height:1;
+}
+
+.scratch-canvas{
+position:absolute;
+inset:0;
+width:100%;
+height:100%;
+cursor:pointer;
+touch-action:none;
+}
+
+.scratch-final-message{
+margin-top:30px;
+font-family:'Cormorant Garamond',serif;
+font-size:30px;
+opacity:0;
+transform:translateY(12px);
+transition:.5s ease;
+}
+
+.scratch-final-message.visible{
+opacity:1;
+transform:translateY(0);
+}
+
+@media(max-width:900px){
+
+.scratch-grid{
+grid-template-columns:1fr;
+max-width:420px;
+}
+
+.scratch-card{
+height:160px;
+}
+
+.scratch-section h2{
+font-size:42px;
+}
+
+.scratch-value{
+font-size:46px;
+}
+
+}
+
+@media(max-width:600px){
+
+.scratch-section h2{
+font-size:34px;
+}
+
+.scratch-section p{
+font-size:16px;
+}
+
+.scratch-card{
+height:145px;
+}
+
+.scratch-value{
+font-size:42px;
+}
+
+}
   
 </style>
 </head>
@@ -1367,33 +1491,42 @@ margin-right:auto;
 <img src="foto_casal.jpeg" alt="Ana e José">
 </div>
 
-<div class="count-section">
-<div class="count-title">A contagem decrescente já começou</div>
+<!-- SCRATCH DATE SECTION - substituir esta secção para voltar ao countdown -->
+<section class="scratch-section">
 
-<div class="countdown">
+<h2>Descobre a nossa data</h2>
 
-<div class="box">
-<div class="num" id="days">0</div>
-<div class="label">Dias</div>
+<p>
+Raspa os três cartões para descobrir o dia que queremos celebrar convosco.
+</p>
+
+<div class="scratch-grid">
+
+<div class="scratch-card" data-value="16">
+  <div class="scratch-label">Dia</div>
+  <div class="scratch-value">16</div>
+  <canvas class="scratch-canvas"></canvas>
 </div>
 
-<div class="box">
-<div class="num" id="hours">0</div>
-<div class="label">Horas</div>
+<div class="scratch-card" data-value="abril">
+  <div class="scratch-label">Mês</div>
+  <div class="scratch-value">abril</div>
+  <canvas class="scratch-canvas"></canvas>
 </div>
 
-<div class="box">
-<div class="num" id="minutes">0</div>
-<div class="label">Min</div>
-</div>
-
-<div class="box">
-<div class="num" id="seconds">0</div>
-<div class="label">Seg</div>
+<div class="scratch-card" data-value="2027">
+  <div class="scratch-label">Ano</div>
+  <div class="scratch-value">2027</div>
+  <canvas class="scratch-canvas"></canvas>
 </div>
 
 </div>
+
+<div class="scratch-final-message" id="scratch-final-message">
+Mal podemos esperar por celebrar este dia convosco.
 </div>
+
+</section>
 
 </section>
 
@@ -1698,26 +1831,137 @@ Ana & José · 2027
 </div>
 
 <script>
-const targetDate = new Date("April 16, 2027 00:00:00").getTime();
+function setupScratchCards(){
+  const cards = document.querySelectorAll(".scratch-card");
+  const finalMessage = document.getElementById("scratch-final-message");
+  let revealedCards = 0;
 
-function updateCountdown(){
+  cards.forEach(function(card){
+    const canvas = card.querySelector(".scratch-canvas");
+    const ctx = canvas.getContext("2d");
+    let isDrawing = false;
+    let revealed = false;
 
-const now = new Date().getTime();
-const diff = targetDate - now;
+    function resizeCanvas(){
+      const rect = card.getBoundingClientRect();
+      canvas.width = rect.width;
+      canvas.height = rect.height;
 
-const days = Math.floor(diff / (1000*60*60*24));
-const hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
-const minutes = Math.floor((diff % (1000*60*60)) / (1000*60));
-const seconds = Math.floor((diff % (1000*60)) / 1000);
+      drawCover();
+    }
 
-document.getElementById("days").innerText = days;
-document.getElementById("hours").innerText = hours;
-document.getElementById("minutes").innerText = minutes;
-document.getElementById("seconds").innerText = seconds;
+    function drawCover(){
+      const width = canvas.width;
+      const height = canvas.height;
+
+      ctx.globalCompositeOperation = "source-over";
+
+      const gradient = ctx.createLinearGradient(0, 0, width, height);
+      gradient.addColorStop(0, "#3f4a36");
+      gradient.addColorStop(0.45, "#56634a");
+      gradient.addColorStop(1, "#2f352c");
+
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, width, height);
+
+      ctx.fillStyle = "rgba(255,255,255,.88)";
+      ctx.font = "13px Montserrat, sans-serif";
+      ctx.textAlign = "center";
+      ctx.letterSpacing = "2px";
+      ctx.fillText("Raspar", width / 2, height / 2 + 5);
+
+      ctx.globalCompositeOperation = "destination-out";
+    }
+
+    function getPosition(e){
+      const rect = canvas.getBoundingClientRect();
+      const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+      const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+
+      return {
+        x: clientX - rect.left,
+        y: clientY - rect.top
+      };
+    }
+
+    function scratch(e){
+      if(!isDrawing) return;
+
+      e.preventDefault();
+
+      const pos = getPosition(e);
+
+      ctx.beginPath();
+      ctx.arc(pos.x, pos.y, 24, 0, Math.PI * 2);
+      ctx.fill();
+
+      checkReveal();
+    }
+
+    function checkReveal(){
+      if(revealed) return;
+
+      const pixels = ctx.getImageData(0, 0, canvas.width, canvas.height);
+      let transparent = 0;
+
+      for(let i = 3; i < pixels.data.length; i += 4){
+        if(pixels.data[i] === 0){
+          transparent++;
+        }
+      }
+
+      const percentage = transparent / (canvas.width * canvas.height);
+
+      if(percentage > 0.42){
+        revealed = true;
+        canvas.style.transition = "opacity .45s ease";
+        canvas.style.opacity = "0";
+
+        setTimeout(function(){
+          canvas.style.display = "none";
+        }, 450);
+
+        revealedCards++;
+
+        if(revealedCards === cards.length && finalMessage){
+          finalMessage.classList.add("visible");
+        }
+      }
+    }
+
+    canvas.addEventListener("mousedown", function(e){
+      isDrawing = true;
+      scratch(e);
+    });
+
+    window.addEventListener("mouseup", function(){
+      isDrawing = false;
+    });
+
+    canvas.addEventListener("mousemove", scratch);
+
+    canvas.addEventListener("touchstart", function(e){
+      isDrawing = true;
+      scratch(e);
+    }, { passive:false });
+
+    canvas.addEventListener("touchend", function(){
+      isDrawing = false;
+    });
+
+    canvas.addEventListener("touchmove", scratch, { passive:false });
+
+    resizeCanvas();
+
+    window.addEventListener("resize", function(){
+      if(!revealed){
+        resizeCanvas();
+      }
+    });
+  });
 }
 
-setInterval(updateCountdown,1000);
-updateCountdown();
+window.addEventListener("load", setupScratchCards);
 </script>
 
   
