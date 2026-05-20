@@ -1527,6 +1527,9 @@ height:100%;
 cursor:pointer;
 touch-action:none;
 border-radius:50%;
+z-index:5;
+opacity:1;
+display:block;
 }
 
 .scratch-final-message{
@@ -1967,9 +1970,6 @@ function setupScratchCards(){
   const finalMessage = document.getElementById("scratch-final-message");
   let revealedCards = 0;
 
-  const monogram = new Image();
-  monogram.src = "monogramaAJ_sem_fundo.png";
-
   cards.forEach(function(card){
     const canvas = card.querySelector(".scratch-canvas");
     const ctx = canvas.getContext("2d");
@@ -2000,49 +2000,35 @@ function setupScratchCards(){
       ctx.clip();
 
       const gradient = ctx.createRadialGradient(
-  centerX - 35, centerY - 35, 20,
-  centerX, centerY, radius
-);
+        centerX - 35, centerY - 35, 20,
+        centerX, centerY, radius
+      );
 
-gradient.addColorStop(0, "#a8b39a");
-gradient.addColorStop(0.42, "#7e8b70");
-gradient.addColorStop(1, "#5f6c53");
+      gradient.addColorStop(0, "#b7c1aa");
+      gradient.addColorStop(0.42, "#92a084");
+      gradient.addColorStop(1, "#6f7d62");
 
       ctx.fillStyle = gradient;
       ctx.fillRect(0, 0, width, height);
 
-      ctx.strokeStyle = "rgba(255,255,255,.18)";
+      ctx.strokeStyle = "rgba(255,255,255,.25)";
       ctx.lineWidth = 8;
       ctx.beginPath();
       ctx.arc(centerX, centerY, radius - 9, 0, Math.PI * 2);
       ctx.stroke();
 
-      ctx.strokeStyle = "rgba(0,0,0,.18)";
+      ctx.strokeStyle = "rgba(0,0,0,.16)";
       ctx.lineWidth = 2;
       ctx.beginPath();
       ctx.arc(centerX, centerY, radius - 18, 0, Math.PI * 2);
       ctx.stroke();
 
-      if(monogram.complete){
-  const imgSize = radius * 0.92;
-  ctx.globalAlpha = 0.97;
-  ctx.drawImage(
-    monogram,
-    centerX - imgSize / 2,
-    centerY - imgSize / 2 - 6,
-    imgSize,
-    imgSize
-  );
-  ctx.globalAlpha = 1;
-}
-      } else {
-        ctx.fillStyle = "rgba(255,255,255,.9)";
-        ctx.font = "36px Cormorant Garamond, serif";
-        ctx.textAlign = "center";
-        ctx.fillText("A&J", centerX, centerY + 10);
-      }
+      ctx.fillStyle = "rgba(255,255,255,.95)";
+      ctx.font = "42px Cormorant Garamond, serif";
+      ctx.textAlign = "center";
+      ctx.fillText("A&J", centerX, centerY + 8);
 
-      ctx.fillStyle = "rgba(255,255,255,.82)";
+      ctx.fillStyle = "rgba(255,255,255,.9)";
       ctx.font = "11px Montserrat, sans-serif";
       ctx.textAlign = "center";
       ctx.fillText("RASPAR", centerX, centerY + radius * 0.58);
@@ -2051,12 +2037,6 @@ gradient.addColorStop(1, "#5f6c53");
 
       ctx.globalCompositeOperation = "destination-out";
     }
-
-    monogram.onload = function(){
-      if(!revealed){
-        drawSealCover();
-      }
-    };
 
     function getPosition(e){
       const rect = canvas.getBoundingClientRect();
