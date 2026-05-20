@@ -1970,6 +1970,9 @@ function setupScratchCards(){
   const finalMessage = document.getElementById("scratch-final-message");
   let revealedCards = 0;
 
+  const monogram = new Image();
+  monogram.src = "monogramaAJ_sem_fundo.png";
+
   cards.forEach(function(card){
     const canvas = card.querySelector(".scratch-canvas");
     const ctx = canvas.getContext("2d");
@@ -2023,15 +2026,28 @@ function setupScratchCards(){
       ctx.arc(centerX, centerY, radius - 18, 0, Math.PI * 2);
       ctx.stroke();
 
-      ctx.fillStyle = "rgba(255,255,255,.95)";
-      ctx.font = "42px Cormorant Garamond, serif";
-      ctx.textAlign = "center";
-      ctx.fillText("A&J", centerX, centerY + 8);
+      if(monogram.complete && monogram.naturalWidth > 0){
+  const imgSize = radius * 0.98;
+  ctx.globalAlpha = 0.98;
+  ctx.drawImage(
+    monogram,
+    centerX - imgSize / 2,
+    centerY - imgSize / 2 - 8,
+    imgSize,
+    imgSize
+  );
+  ctx.globalAlpha = 1;
+} else {
+  ctx.fillStyle = "rgba(255,255,255,.95)";
+  ctx.font = "42px Cormorant Garamond, serif";
+  ctx.textAlign = "center";
+  ctx.fillText("A&J", centerX, centerY + 8);
+}
 
-      ctx.fillStyle = "rgba(255,255,255,.9)";
-      ctx.font = "11px Montserrat, sans-serif";
-      ctx.textAlign = "center";
-      ctx.fillText("RASPAR", centerX, centerY + radius * 0.58);
+ctx.fillStyle = "rgba(255,255,255,.9)";
+ctx.font = "11px Montserrat, sans-serif";
+ctx.textAlign = "center";
+ctx.fillText("RASPAR", centerX, centerY + radius * 0.58);
 
       ctx.restore();
 
@@ -2131,13 +2147,19 @@ function setupScratchCards(){
 
     canvas.addEventListener("touchmove", scratch, { passive:false });
 
-    resizeCanvas();
+    monogram.onload = function(){
+  if(!revealed){
+    drawSealCover();
+  }
+};
 
-    window.addEventListener("resize", function(){
-      if(!revealed){
-        resizeCanvas();
-      }
-    });
+resizeCanvas();
+
+window.addEventListener("resize", function(){
+  if(!revealed){
+    resizeCanvas();
+  }
+});
   });
 }
 
